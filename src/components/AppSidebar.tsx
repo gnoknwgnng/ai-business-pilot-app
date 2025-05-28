@@ -51,8 +51,9 @@ const sidebarItems = [
 ];
 
 export function AppSidebar() {
-  const { collapsed } = useSidebar();
+  const { state } = useSidebar();
   const location = useLocation();
+  const collapsed = state === "collapsed";
 
   const isActive = (path: string) => {
     if (path === "/") {
@@ -62,7 +63,7 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar className={`${collapsed ? "w-16" : "w-64"} bg-dark-surface border-r border-gray-800`} collapsible>
+    <Sidebar className={`${collapsed ? "w-16" : "w-64"} bg-dark-surface border-r border-gray-800`} collapsible="icon">
       <SidebarContent className="bg-dark-surface">
         <SidebarGroup>
           <SidebarGroupContent>
